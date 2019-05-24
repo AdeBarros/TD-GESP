@@ -11,11 +11,13 @@ namespace PubLinkTest
     public class TestCollection
     {
         [TestMethod]
-        public void TestCreerCollection()
+        public void TestAjouterLienCollection()
         {
             Collection collection = new Collection();
             Lien exempleLien = new Lien("Example", "example.com");
+
             collection.Ajouter(exempleLien);
+
             Assert.AreEqual(1, collection.Compte);
             Assert.AreEqual(exempleLien.ToString(), collection.Get(0).ToString());
         }
@@ -25,8 +27,10 @@ namespace PubLinkTest
         {
             Collection collection = new Collection();
             Lien exempleLien = new Lien("Example", "example.com");
+
             collection.Ajouter(exempleLien);
             collection.Supprimer(0);
+
             Assert.AreEqual(0, collection.Compte);
         }
     }

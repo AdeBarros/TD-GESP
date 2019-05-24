@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Collection.cs" />
     <Compile Include="Lien.cs" />
+    <Compile Include="MotDePasse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

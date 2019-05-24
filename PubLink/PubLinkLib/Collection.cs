@@ -20,9 +20,9 @@ namespace PubLinkLib
             get { return _listeLiens.Count; }
         }
 
-        public Lien Get(int indice)//Ajouter un test si oor
+        public Lien Get(int indice)
         {
-            return _listeLiens.ElementAt(indice);
+            return -1 < indice && indice < this.Compte ? _listeLiens.ElementAt(indice) : null;
         }
 
         public void Ajouter(Lien unLien)
@@ -31,7 +31,28 @@ namespace PubLinkLib
         }
         public void Supprimer(int indice)
         {
-            _listeLiens.Remove(this.Get(indice));
+            var o = this.Get(indice);
+            if (o != null)
+                _listeLiens.Remove(o);
+        }
+
+        public override string ToString()
+        {
+            String r = "";
+            
+            if (this.Compte > 0)
+            {
+                for (int i = 0; i < this.Compte; i++)
+                {
+                    r += ((i + 1) + " : " + this.Get(i)) + "\n";
+                }
+            }
+            else
+            {
+                r += "Aucun lien à afficher !\n";
+            }
+
+            return r;
         }
     }
 }
