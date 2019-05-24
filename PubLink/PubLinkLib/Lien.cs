@@ -8,18 +8,25 @@ namespace PubLinkLib
     // Représente un lien web
     public class Lien
     {
-        public string titre { get; private set; }
+        public string Titre { get; private set; }
         public string Url { get; private set; }
 
-        public Lien(string un_titre, string un_url)
+        public Lien(string unTitre, string unUrl)
         {
-            titre = un_url;
-            Url = un_url;
+            Titre = unTitre;
+            if (!(unUrl.StartsWith("http://") || unUrl.StartsWith("https://")))
+            {
+                Url = "http://" + unUrl;
+            }
+            else
+            {
+                Url = unUrl;
+            }
         }
 
         public override string ToString()
         {
-            return titre + " " + Url;
+            return Titre + " " + Url;
         }
     }
 }

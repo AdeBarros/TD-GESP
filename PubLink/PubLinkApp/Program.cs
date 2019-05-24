@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using PubLinkLib;
 
 namespace PubLinkApp
 {
@@ -9,20 +10,21 @@ namespace PubLinkApp
     {
         static void Main(string[] args)
         {
-            PubLinkLib.Collection listeLien = new PubLinkLib.Collection(); ;
-            listeLien.Ajouter(new PubLinkLib.Lien("Hacker News", "https://news.ycombinator.com"));
-            listeLien.Ajouter(new PubLinkLib.Lien("Reddit", "https://reddit.com"));
-            listeLien.Ajouter(new PubLinkLib.Lien("Boing Boing", "boingboing.net"));
+            Collection listeLien = new Collection(); ;
+            listeLien.Ajouter(new Lien("Hacker News", "https://news.ycombinator.com"));
+            listeLien.Ajouter(new Lien("Reddit", "https://reddit.com"));
+            listeLien.Ajouter(new Lien("Boing Boing", "boingboing.net"));
 
             string choix = "";
             while (choix != "0")
             {
-                string choix_possibles = "\n1 : Lister les liens";
-                choix_possibles += "\n0 : Quitter";
-                Console.WriteLine("Choisissez une action : " + choix_possibles);
+                string choixPossibles = "\n2 : Ajouter un lien";
+                choixPossibles+="\n1 : Lister les liens";
+                choixPossibles += "\n0 : Quitter";
+                Console.WriteLine("Choisissez une action : " + choixPossibles);
                 choix = Console.ReadLine();
 
-                switch (choix)
+                switch (choix)//Remplacer par if?
                 {
                     case "1":
                         if (listeLien.Compte > 0)
@@ -36,6 +38,15 @@ namespace PubLinkApp
                         {
                             Console.WriteLine("Aucun lien à afficher !");
                         }
+                        break;
+
+                    case "2":
+                        Console.WriteLine("Nom du lien ?");
+                        string nom = Console.ReadLine();
+                        Console.WriteLine("Url du lien ?");
+                        string url = Console.ReadLine();
+                        listeLien.Ajouter(new Lien(nom, url));
+                        Console.WriteLine("Votre lien a bien été ajouté !");
                         break;
                 }
                 Console.WriteLine();

@@ -13,14 +13,27 @@ namespace PubLinkTest
         [TestMethod]
         public void TestCreerLien()
         {
-            string Titre = "Wikipedia";
-            string URL = "wikipedia.org";
+            string titre = "Wikipedia";
+            string url = "http://wikipedia.org";
 
-            Lien lien = new Lien("Wikipedia", "wikipedia.org");
+            Lien lien = new Lien(titre, url);
 
-            Assert.AreEqual(Titre, lien.titre);
-            Assert.AreEqual(URL, lien.Url);
-            Assert.AreEqual(Titre + " "+ URL, lien.ToString());
+            Assert.AreEqual(titre, lien.Titre);
+            Assert.AreEqual(url, lien.Url);
+            Assert.AreEqual(titre + " " + url, lien.ToString());
+        }
+
+        [TestMethod]
+        public void TestCreerLienSansProtocole()
+        {
+            string titre = "Wikipedia";
+            string url = "wikipedia.org";
+
+            Lien lien = new Lien(titre, url);
+
+            Assert.AreEqual(titre, lien.Titre);
+            Assert.AreEqual("http://" + url, lien.Url);
+            Assert.AreEqual(titre + " http://" + url, lien.ToString());
         }
     }
 }

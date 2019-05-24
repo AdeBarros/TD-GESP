@@ -8,25 +8,30 @@ namespace PubLinkLib
     // Représente une collection de liens web
     public class Collection
     {
-        private List<Lien> listeliens;
+        private List<Lien> _listeLiens;
 
         public Collection()
         {
+            _listeLiens = new List<Lien>();
         }
 
         public int Compte
         {
-            get { return listeliens.Count; }
+            get { return _listeLiens.Count; }
         }
 
-        public Lien Get(int indice)
+        public Lien Get(int indice)//Ajouter un test si oor
         {
-            return listeliens.ElementAt(indice);
+            return _listeLiens.ElementAt(indice);
         }
 
-        public void Ajouter(Lien un_lien)
+        public void Ajouter(Lien unLien)
         {
-            listeliens.Add(un_lien);
+            _listeLiens.Add(unLien);
+        }
+        public void Supprimer(int indice)
+        {
+            _listeLiens.Remove(this.Get(indice));
         }
     }
 }
